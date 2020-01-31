@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=StaffLoyaltyCard
+comment0.text=\ Represents\ a\ Staff\ loyalty\ card\ for\ a\ fictional\ university\r\n\ \ bookshop.\r\n\ \ @author\ (Grant\ Allenby\ w18013678)\r\n\ \ @version\ (4/3/19)\r\n
+comment1.params=title\ firstName\ lastName\ cardNumber\ staffNumber\ location
+comment1.target=StaffLoyaltyCard(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\ Constructor\ for\ a\ staff\ loyalty\ card.\ this\ constructor\ assigns\ 0\ points.\r\n\ \ @param\ title\ -\ The\ Staff\ Member's\ title.\r\n\ \ @param\ firstName\ -\ The\ Staff\ Member's\ first\ name.\r\n\ \ @param\ lastName\ -\ The\ Staff\ Member's\ last\ name.\r\n\ \ @param\ cardNumber\ -\ The\ Staff\ Member's\ card\ number.\r\n\ \ @param\ location\ -\ The\ Staff\ Member's\ location.\r\n\ \ @param\ staffNumber\ -\ The\ Staff\ Member's\ staff\ number.\r\n
+comment2.params=title\ firstName\ lastName\ cardNumber\ staffNumber\ location\ points
+comment2.target=StaffLoyaltyCard(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
+comment2.text=\ Constructor\ for\ a\ staff\ loyalty\ card.\ this\ constructor\ assigns\ 0\ points.\r\n\ \ @param\ title\ -\ The\ Staff\ Member's\ title.\r\n\ \ @param\ firstName\ -\ The\ Staff\ Member's\ first\ name.\r\n\ \ @param\ lastName\ -\ The\ Staff\ Member's\ last\ name.\r\n\ \ @param\ cardNumber\ -\ The\ Staff\ Member's\ card\ number.\r\n\ \ @param\ location\ -\ The\ Staff\ Member's\ location.\r\n\ \ @param\ staffNumber\ -\ The\ Staff\ Member's\ staff\ number.\r\n\ \ @param\ points\ -\ The\ number\ of\ points\ on\ the\ Staff\ Member's\ card.\ This\ can\ be\ 0.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getLocation()
+comment3.text=\ Method\ for\ returning\ the\ location\ of\ the\ Staff\ Member.\r\n\ \ @return\ location\ -\ the\ location\ of\ the\ Staff\ Member.\r\n
+comment4.params=
+comment4.target=java.lang.String\ getStaffNumber()
+comment4.text=\ Method\ for\ returning\ the\ Staff\ Member's\ staff\ number.\r\n\ \ @return\ staffNumber\ -\ the\ staff\ number\ of\ the\ Staff\ Member.\r\n
+comment5.params=
+comment5.target=void\ print()
+comment5.text=\ Prints\ the\ Staff\ Member's\ name,\ card\ number\ and\ location.\r\n
+comment6.params=location
+comment6.target=void\ setLocation(java.lang.String)
+comment6.text=\ Allows\ the\ change\ of\ location\ of\ the\ Staff\ Member.\r\n\ \ @param\ location\ -\ The\ location\ of\ the\ Staff\ Member.\r\n
+comment7.params=
+comment7.target=java.lang.String\ toString()
+comment7.text=\ Returns\ the\ Staff\ Member's\ name,\ card\ number\ and\ location.\r\n\ \ @return\ super.toString()\ -\ The\ Staff\ Member's\ name\ and\ card\ number.\r\n\ \ @return\ staffNumber\ -\ The\ Staff\ Member's\ staff\ number.\r\n\ \ @return\ location\ -\ The\ Staff\ Member's\ location.\r\n
+numComments=8

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="UTF-8">
+    <link href="index.css" rel="stylesheet" type="text/css">
+
+    <title>Find Out More</title>
+
+</head>
+
+<body>
+
+<div id="banner">
+    <h1>Chollerton Tearooms</h1> <!-- Advertises the name of the page. -->
+    <img class="teapot" src="../images/teapot1.png" alt="teapot">
+</div>
+
+<div id="wrapper">
+
+    <nav> <!-- navigation for the index site -->
+
+        <a class="navspacing1" href="index.html"><strong>Home</strong></a>
+        <!-- takes you to the homepage-->
+
+        <a class="navspacing2" href="adminForm.php"><strong>Admin</strong></a>
+        <!-- takes you to the "admin" page -->
+
+        <a class="navspacing3" href="findoutmore.html"><strong>Find Out More</strong></a>
+        <!-- takes you to the "find out more" page -->
+
+        <a class="navspacing4" href="credits.html"><strong>Credits</strong></a>
+        <!-- takes you to the "credits" page -->
+
+        <a class="wireframe" href="../docs/wireframe.pdf">Wireframe</a>
+        <!-- links to the pdf for the wireframe -->
+
+    </nav>
+</div>
+
+<main id="formcontainer">
+
+    <div id="form">
+        <form action="form.php" method="get">
+            <h2>Find Out More Form</h2>
+            <br/>
+            <br/>
+            <label id="forename">Forename: <br/>
+                <input type="text" name="forename" accesskey="f" size="30">
+            </label>
+            <br/>
+            <label id="surname">Surname: <br/>
+                <input type="text" name="surname" accesskey="s" size="30">
+            </label>
+            <br/>
+            <label id="postalAddress">Address: <br/>
+                <textarea rows="6" cols="30" name="postalAddress" accesskey="a"></textarea>
+            </label>
+            <br/>
+            <label id="landLineTelNo">LandLine Telephone No. <br/>
+                <input type="text" name="landLineTelNo" accesskey="l" size="20">
+            </label>
+            <br/>
+            <label id="mobileTelNo">Mobile Telephone No. <br/>
+                <input type="text" name="mobileTelNo" accesskey="m" size="20">
+            </label>
+            <br/>
+            <label id="email">Email Address: <br/>
+                <input type="text" name="email" accesskey="e" size="50">
+            </label>
+            <br/>
+            <label>How would you like to be contacted? <br/>
+                <select name="sendMethod" accesskey="n">
+                    <option value="post">Post</option>
+                    <option value="email">SMS</option>
+                    <option value="SMS">email</option>
+                </select>
+            </label>
+            <br/>
+            <label>Which of our facilities are you particularly interested in? <br/>
+                <select name="catID" accesskey="t">
+                    <option value="c1">Tearoom</option>
+                    <option value="c2">Craft Shop</option>
+                    <option value="c3">Village Store</option>
+                    <option value="c4">Post Office</option>
+                    <option value="c5">Bed and Breakfast</option>
+                </select>
+            </label>
+            <br/>
+            <br/>
+            <input type="submit" value="submit" accesskey="u">
+        </form>
+    </div>
+
+    <p id="findoutmoredetails">
+        Please enter your details into the form provided to receive details<br/>
+        and up to date information on our facilities.
+    </p>
+
+    <img id="findoutmoreimage1" src="../images/findoutmoreimage1.jpeg" alt="tea from above with books">
+</main>
+<footer>
+
+    <p>Page and it's content are of free non-commercial use images and content only, unless stated.</p>
+
+    <a id="index" href="../pages/index.html">Site Index</a>
+
+    <p id="sitecreator">Site created by Grant Allenby</p>
+
+</footer>
+</body>

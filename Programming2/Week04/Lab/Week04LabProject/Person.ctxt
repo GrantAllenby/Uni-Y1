@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=firstName\ lastName
+comment0.target=Person(java.lang.String,\ java.lang.String)
+comment0.text=\ Constructor\ for\ class\ Person.\r\n\ \r\n
+comment1.params=
+comment1.target=Person()
+comment1.text=\ Empty\ constructor\ for\ class\ Person.\r\n\ \r\n
+comment2.params=
+comment2.target=java.lang.String\ getFirstName()
+comment2.text=\ Returns\ first\ name.\r\n\ \ @return\ firstName.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getLastName()
+comment3.text=\ Returns\ last\ name.\r\n\ \ @return\ lastName.\r\n
+comment4.params=
+comment4.target=void\ print()
+comment4.text=\ Prints\ the\ persons\ first\ and\ last\ name.\r\n\ \r\n
+comment5.params=firstName
+comment5.target=void\ setFirstName(java.lang.String)
+comment5.text=\ Sets\ a\ new\ first\ name\ for\ the\ person.\r\n\ \r\n
+comment6.params=lastName
+comment6.target=void\ setLastName(java.lang.String)
+comment6.text=\ sets\ a\ new\ last\ name\ for\ the\ person.\r\n\ \r\n
+comment7.params=
+comment7.target=java.lang.String\ toString()
+comment7.text=\ returns\ the\ first\ name\ and\ last\ name\ of\ the\ person.\r\n\ \ @return\ firstName\ lastName\r\n
+numComments=8

@@ -1,0 +1,18 @@
+
+column consultant_sname heading Consultant|Surname
+column consultant_sname format A20
+column job_desc Heading Job
+column job_desc format A15
+column emp_name heading Employee|Name
+column emp_name format A30
+column expense_value heading Expenses
+column expense_value format $9999999999
+column cat_desc heading Expenses|Description
+column cat_desc format A20
+break on cat_desc
+select consultant_sname, job_desc, emp_name, expense_value, cat_desc
+from Consultant join job on consultant_job = job_id
+join contract on contract_lead = consultant_id
+join job_expenses on expense_job = contract_id
+join expense_cat on expense_type = cat_id
+join employer on contract_client = emp_id;

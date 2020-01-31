@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=hp\ str\ age\ nm
+comment0.target=Monster(int,\ int,\ int,\ java.lang.String)
+comment1.params=
+comment1.target=int\ getHitPoints()
+comment2.params=
+comment2.target=int\ getStrength()
+comment3.params=
+comment3.target=int\ getAge()
+comment4.params=
+comment4.target=java.lang.String\ getName()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment6.params=other
+comment6.target=int\ compareTo(Monster)
+numComments=7

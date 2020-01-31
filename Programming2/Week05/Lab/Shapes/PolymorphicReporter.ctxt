@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=shape
+comment0.target=void\ outputDetails(TwoDShape)
+comment1.params=shape
+comment1.target=void\ outputArea(TwoDShape)
+numComments=2

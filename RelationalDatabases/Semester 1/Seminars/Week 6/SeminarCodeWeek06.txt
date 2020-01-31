@@ -1,0 +1,17 @@
+a.	Display the name, value and expense description for all expenses claimed for contract number 10
+
+select CONSULTANT_FNAME, CONSULTANT_SNAME, EXPENSE_VALUE, CAT_DESC
+from job_expenses join consultant on EXPENSE_CONSULTANT = CONSULTANT_ID
+join expense_cat on EXPENSE_TYPE = CAT_ID
+where EXPENSE_JOB = 10;
+
+b.	Which consultants are still leading active contracts (hint: how do you know a contract is still active and not closed?)
+
+select CONSULTANT_FNAME, CONSULTANT_SNAME 
+from contract join consultant on CONTRACT_LEAD = CONSULTANT_ID 
+where CONTRACT_END is NULL and CONSULTANT_STATUS = 'ACTIVE';
+
+c.	Display the names of all consultants and their job descriptions
+
+select CONSULTANT_FNAME, CONSULTANT_SNAME, JOB_DESC 
+from consultant join job on CONSULTANT_JOB = JOB_ID;

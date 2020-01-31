@@ -1,0 +1,65 @@
+--------------------------------------------------------
+1.Display the names of the team members currently active and working on a contract that they are not leading on
+
+SQL> select consultant_fname, consultant_sname, team_member
+  2  from consultant join contract on contract_lead = consultant_id
+  3  right join job_team on consultant_id = team_member where consultant_status = 'ACTIVE' and contract_end is not null;
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     TEAM_MEMBER
+-------------------- -------------------- -----------
+Cloud                Strife                         1
+Cloud                Strife                         1
+Noctis Lucis         Caelum                         3
+Tifa                 Lockhart                       6
+Dogu                 Magus                         33
+Noctis Lucis         Caelum                         3
+Ragu                 Magus                         34
+Dogu                 Magus                         33
+Cid                  Highwind                      26
+Dogu                 Magus                         33
+
+10 rows selected.
+--------------------------------------------------------
+2. how much has each employer/client been charged in total to date?  Display the name of the client and the total amount charged to each of them
+
+SQL> select emp_name, sum(charge_fee + charge_expenses)
+  2  from employer join contract on contract_client = emp_id
+  3  join charge_sheet on charge_job = contract_id
+  4  group by emp_name;
+
+EMP_NAME                       SUM(CHARGE_FEE+CHARGE_EXPENSES)
+------------------------------ -------------------------------
+AVALANCHE                                                80925
+Kingsglaive                                              14100
+Strife Delivery Service                                  36200
+Archadian Judges                                        278435
+ 
+--------------------------------------------------------
+3. Display the contract id, name of the client and the duration of the contract for all fulfilled contracts
+
+SQL> select contract_id, emp_name, (contract_end - contract_start) as "Contract duration"
+  2  from contract join employer on contract_client = emp_id
+  3  where contract_end is not null;
+
+CONTRACT_ID EMP_NAME                       Contract duration
+----------- ------------------------------ -----------------
+         22 AVALANCHE                                    119
+         24 AVALANCHE                                    232
+         30 AVALANCHE                                     89
+         23 Strife Delivery Service                      119
+         26 Kingsglaive                                  340
+          8 Archadian Judges                              29
+         28 Archadian Judges                             290
+          2 Archadian Judges                             153
+         27 Archadian Judges                             290
+          4 Archadian Judges                              80
+          3 Archadian Judges                             153
+
+CONTRACT_ID EMP_NAME                       Contract duration
+----------- ------------------------------ -----------------
+          6 Archadian Judges                              31
+          5 Archadian Judges                              56
+         29 Archadian Judges                             290
+
+14 rows selected.
+--------------------------------------------------------

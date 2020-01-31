@@ -1,0 +1,363 @@
+
+
+
+
+Week 4 
+
+Display the names of the team members currently active and working on a contract that they are not leading on
+
+
+
+select CONSULTANT_FNAME,  CONSULTANT_SNAME  , CONTRACT_ID, CONSULTANT_ID, contract_lead 
+from consultant join job_team on team_member = Consultant_id 
+		JOIN contract ON   team_job  = contract_id
+where CONTRACT_END is null
+order by CONTRACT_ID 	
+;
+
+
+SET LINESIZE 32000;
+SET PAGESIZE 40000;
+SET LONG 50000;
+
+----------------------------------
+Display the contract id, name of the client and the duration of the contract for all fulfilled contracts
+
+select contract_id, emp_name, (CONTRACT_END - CONTRACT_START)
+from employer join contract on emp_ID = contract_client
+where CONTRACT_END is not NULL
+order by emp_name, (CONTRACT_END - CONTRACT_START)
+;
+
+
+
+-----------------------------------
+how much has each employer/client been charged in total to date?  Display the name of the client and the total amount charged to each of them
+
+select  emp_name,sum(charge_fee + charge_expenses)
+from employer join contract on emp_ID = contract_client
+              join charge_sheet on charge_job = contract_id
+group by emp_name, emp_ID
+;
+
+
+
+
+
+------------------------------------------------------------
+
+Week 5
+
+
+
+Write the trigger that will calculate the next charge_id
+
+create or replace trigger trg_newcharge
+before insert on charge_sheet
+for each row
+declare
+v_id number;
+begin
+	select max(charge_id) + 1 into v_id 
+        from charge_sheet;
+	:new.charge_id := v_id;
+end;
+/
+-- see week 7 solutions for a possible if statment
+-- as the select max()+1 will not work when there
+-- are no rows in the table
+-- in week7 we add some code to solve this.
+
+
+
+Write the trigger that will calculate the fee due
+
+Work out duration of the contract
+For every day over 10 charge 500 
+10000 charge is due as a min, if contract took over 10 days this is added to additional daily rate (if contract took 15 days the fee is 12500)
+
+Create or replace trigger trg_chargefee
+before insert on charge_sheet
+For each row
+Declare
+V_duration number;
+BEGIN
+Select (CONTRACT_END - CONTRACT_START) into V_duration
+From contract
+Where contract_id= :new.charge_job;
+If V_duration < 11 then
+	:new.charge_fee := 10000;
+else
+        :new.charge_fee := ((V_duration - 10) * 500) + 10000;
+end if;
+END;
+/
+
+
+
+
+
+Write the trigger that will calculate the expenses due
+
+create or replace trigger trg_chargeexpenses
+before insert on charge_sheet
+for each row
+declare
+v_expenses number;
+begin
+	select sum(expense_value) into v_expenses 
+        from job_expenses where expense_job  = :new.charge_job
+	and EXPENSE_APPROVED is not null;
+	:new.charge_expenses := v_expenses;
+end;
+/
+
+
+
+Write the trigger that will insert a new charge sheet when the contract is closed and all expenses are fulfilled
+
+Create or replace trigger trg_closecontract
+After update of contract_end on contract
+For each row
+Declare
+V_outstanding number;
+Begin
+Select count(*) into v_outstanding
+From job_expenses
+Where expense_job= :new.contract_id and expense_approved is null;
+If (v_outstanding = 0) then
+	insert into charge_sheet values (1,:new.contract_id,10000,999);
+	end if;
+End;
+/
+ 
+
+
+
+
+Write the trigger that will fire when an expense is approved and if the contract for that expense is closed and all other expenses are approved create a new charge sheet record
+
+Create or replace trigger trg_expensecomplete
+after update of EXPENSE_APPROVED on job_expenses
+for each row
+declare
+V_outstanding number;
+v_end_date date;
+begin 
+Select count(*) into v_outstanding
+  From job_expenses
+  Where expense_job= :new.expense_job and expense_approved is null;
+Select CONTRACT_END into v_end_date
+  from contract
+  where CONTRACT_ID = :new.expense_job;
+if v_outstanding = 0 and v_end_date is not null then
+     insert into charge_sheet values (1,:new.expense_job,10000,999);
+end if;
+end;
+/
+
+
+
+-----------------------------------------------------------
+
+Week 6 - you will need to desc the tables to fully
+understand the inserts. Also this is assuming you need to work out
+all the new primary keys
+
+
+
+MAX(EMP_ID)
+-----------
+         14
+
+SQL> insert into employer (emp_id,Emp_name)  values(15,'Lilith Tinker');
+
+    EMP_ID EMP_NAME                       EMP_ADDR1
+---------- ------------------------------ ------------------------------
+EMP_ADDR2                      EMP_PRIORITY
+------------------------------ ------------
+        15 Lilith Tinker
+                                          3
+
+---------------------------------------------------------------
+
+-- note the emp_priority was not inserted as a value but the
+   default from the DDL statment has been used i.e. 3
+
+
+SQL> select max(contract_id) from contract;
+
+MAX(CONTRACT_ID)
+----------------
+              30
+
+insert into contract values(31,15,25,15,'1-MAY-19',NULL,NULL,'New Contract Offer');
+
+
+which consilrants are pilots
+SELECT CONSULTANT_ID, JOB_DESC
+FROM  Consultant JOIN JOB ON  Consultant_JOB = JOB_ID
+WHERE JOB_DESC = 'Pilot';
+
+CONSULTANT_ID JOB_DESC
+------------- ---------------
+
+           25 Pilot
+           26 Pilot
+           19 Pilot
+           27 Pilot
+           28 Pilot
+           29 Pilot
+           30 Pilot
+           31 Pilot
+           24 Pilot
+           23 Pilot
+
+CONSULTANT_ID JOB_DESC
+------------- ---------------
+           22 Pilot
+           21 Pilot
+           20 Pilot
+
+
+
+
+
+
+
+
+SQL> SELECT MAX(team_ID) FROM job_team;
+
+MAX(TEAM_ID)
+------------
+          60
+
+INSERT INTO job_team VALUES(61,31,26);
+
+
+
+----------------
+week 7
+
+
+
+create table cons_chg_log
+(
+ CONSULT_LOG_ID					    NUMBER(3) constraint conschglog_pk primary key,
+ Cons_update_date				    date default sysdate,
+ cons_update_comment			            varchar2(70),
+ CONSULTANT_ID_log                                 NUMBER(3),
+ CONSULTANT_FNAME_OLD                               VARCHAR2(20),
+ CONSULTANT_FNAME_NEW                               VARCHAR2(20),	
+ CONSULTANT_SNAME_OLD                               VARCHAR2(20),
+ CONSULTANT_SNAME_NEW                               VARCHAR2(20),
+ CONSULTANT_TOWN_OLD                                VARCHAR2(15),
+ CONSULTANT_TOWN_NEW                                VARCHAR2(15),
+ CONSULTANT_JOB_OLD                                 NUMBER(3),
+ CONSULTANT_JOB_NEW                                 NUMBER(3),
+ CONSULTANT_STATUS_OLD                              VARCHAR2(20),
+ CONSULTANT_STATUS_NEW                              VARCHAR2(20)
+)
+;
+
+
+create or replace trigger Consultant_change_log
+before update or delete on CONSULTANT
+for each row
+DECLARE
+   V_CONSULT_LOG_ID number; 
+begin
+select max(CONSULT_LOG_ID) + 1 into V_CONSULT_LOG_ID 
+    from cons_chg_log;
+if V_CONSULT_LOG_ID is null then
+	V_CONSULT_LOG_ID := 1;
+end if;
+insert into cons_chg_log values(
+  V_CONSULT_LOG_ID, 
+  sysdate,
+  user,
+  :OLD.CONSULTANT_ID,
+  :OLD.CONSULTANT_FNAME,
+  :NEW.CONSULTANT_FNAME,
+  :OLD.CONSULTANT_SNAME,
+  :NEW.CONSULTANT_SNAME,
+  :OLD.CONSULTANT_TOWN,
+  :NEW.CONSULTANT_TOWN,
+  :OLD.CONSULTANT_JOB,
+  :NEW.CONSULTANT_JOB,
+  :OLD.CONSULTANT_STATUS,
+  :NEW.CONSULTANT_STATUS
+);
+end;
+/
+
+SQL> desc consultant
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CONSULTANT_FNAME                                   VARCHAR2(20)
+ CONSULTANT_SNAME                                   VARCHAR2(20)
+ CONSULTANT_ID                             NOT NULL NUMBER(3)
+ CONSULTANT_TOWN                                    VARCHAR2(15)
+ CONSULTANT_JOB                                     NUMBER(3)
+ CONSULTANT_STATUS                                  VARCHAR2(20)
+
+select max(CONSULTANT_ID) from CONSULTANT;
+
+MAX(CONSULTANT_ID)
+------------------
+                47
+
+SQL> select * from job
+  2  ;
+
+    JOB_ID JOB_DESC
+---------- ---------------
+         1 Oracle
+         2 Mercenary
+         3 Army
+         4 Bar Staff
+         5 Sales
+         6 Self-Employed
+         7 Free lancer
+         8 UNDEFINED
+         9 Warrior
+        10 Thief
+        11 Monk
+
+    JOB_ID JOB_DESC
+---------- ---------------
+        12 Black Mage
+        13 White Mage
+        14 Red Mage
+        15 Pilot
+
+
+
+
+SQL> insert into consultant values('Aleister','Crowley',48,'cefalu',12,'ACTIVE');
+
+1 row created.
+
+
+SQL> select * from cons_chg_log
+  2  ;
+
+no rows selected
+
+
+
+update consultant 
+set CONSULTANT_TOWN = 'Hebron',
+    CONSULTANT_STATUS = 'INACTIVE/DECEASED'
+where CONSULTANT_ID = 48
+;
+
+
+delete from consultant where CONSULTANT_ID = 48;
+
+
+set lines 256
+set trimout on
+set tab off
+
+select * from  cons_chg_log;

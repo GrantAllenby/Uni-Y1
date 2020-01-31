@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=HW4LoyaltyCard
+comment0.text=\r\n\ The\ HW4LoyaltyCard\ class\ holding\ \r\n\ basic\ functionality\ for\ KV4001,\ HW4.\r\n\ @author\ Alan\ Maughan\r\n\ @version\ 1.0\r\n
+comment1.params=fName\ lName\ cardNumber
+comment1.target=HW4LoyaltyCard(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ HW4LoyaltyCard.\r\n\ \r\n\ @param\ fName\ The\ cardholder's\ first\ name\ \r\n\ @param\ lName\ The\ cardholder's\ last\ name\r\n\ @param\ cardNumber\ The\ loyaltyCard\ number\r\n
+comment2.params=
+comment2.target=java.lang.String\ getFirstName()
+comment2.text=\r\n\ Get\ the\ cardholder's\ first\ name\r\n\ \r\n\ @return\ the\ cardholder's\ first\ name\r\n
+comment3.params=
+comment3.target=java.lang.String\ getLastName()
+comment3.text=\r\n\ Get\ the\ cardholder's\ last\ name\r\n\ \r\n\ @return\ the\ cardholder's\ last\ name\r\n
+comment4.params=
+comment4.target=java.lang.String\ getcardNumber()
+comment4.text=\r\n\ Get\ the\ cardholder's\ account\ Number\r\n\ \r\n\ @return\ the\ cardholder's\ account\ number\r\n
+comment5.params=
+comment5.target=void\ printAccountDetails()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ Return\ details\ of\ an\ member\ as\ a\ formated\ string\r\n\ \r\n\ @return\ the\ cardholder's\ details\ \r\n
+comment7.params=fName
+comment7.target=void\ setFirstName(java.lang.String)
+comment7.text=\r\n\ Change\ the\ firstname\r\n\ \r\n\ @param\ fName\ the\ new\ firstname\r\n\ \r\n
+comment8.params=lName
+comment8.target=void\ setLastName(java.lang.String)
+comment8.text=\r\n\ Change\ the\ lastname\r\n\ \r\n\ @param\ lName\ the\ new\ lastname\r\n\ \r\n
+numComments=9

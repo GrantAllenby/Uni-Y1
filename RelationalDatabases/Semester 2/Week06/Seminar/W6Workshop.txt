@@ -1,0 +1,104 @@
+A new employer/client wishes to place a contract.  The employer name is ‘Lilith Tinker’ and they have a priority of 3.   The client is placing a contract for a pilot commencing on the 1st may 2019 on ‘New Contract Offer’ rate.  The job requires a second pilot due to the distance and so a job team record is required for the job.  The contract lead goes to the first pilot on the list who is active with the co-pilot being the next name/id
+-------------------------------------------------------------------------------------------------
+1. Create the client record
+
+SQL> insert into employer (emp_id, emp_name, emp_priority) values
+  2  (15,'Lilith Tinker',3);
+
+1 row created.
+-------------------------------------------------------------------------------------------------
+2. Identify who the lead will be
+SQL> select * from consultant join job on consultant_job = job_id
+  2  where job_desc = 'Pilot' and consultant_status = 'ACTIVE';
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID CONSULTANT_TOWN
+-------------------- -------------------- ------------- ---------------
+CONSULTANT_JOB CONSULTANT_STATUS        JOB_ID JOB_DESC
+-------------- -------------------- ---------- ---------------
+Cidolfus             Demen Bunansa                   29
+            15 ACTIVE                       15 Pilot
+
+Cidolfus             Orlandeau                       30 Southern Sky
+            15 ACTIVE                       15 Pilot
+
+Cid                  Randell                         31 Invalice
+            15 ACTIVE                       15 Pilot
+
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID CONSULTANT_TOWN
+-------------------- -------------------- ------------- ---------------
+CONSULTANT_JOB CONSULTANT_STATUS        JOB_ID JOB_DESC
+-------------- -------------------- ---------- ---------------
+Cid                  Kramer                          20
+            15 ACTIVE                       15 Pilot
+
+Cid                  Previa                          24 Airship Base
+            15 ACTIVE                       15 Pilot
+
+Cid                                                  27 Thunder Plains
+            15 ACTIVE                       15 Pilot
+
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID CONSULTANT_TOWN
+-------------------- -------------------- ------------- ---------------
+CONSULTANT_JOB CONSULTANT_STATUS        JOB_ID JOB_DESC
+-------------- -------------------- ---------- ---------------
+Cid                                                  23 Baron Town
+            15 ACTIVE                       15 Pilot
+
+Cid                                                  22 Kazus
+            15 ACTIVE                       15 Pilot
+
+Cid                                                  21 Poft
+            15 ACTIVE                       15 Pilot
+
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID CONSULTANT_TOWN
+-------------------- -------------------- ------------- ---------------
+CONSULTANT_JOB CONSULTANT_STATUS        JOB_ID JOB_DESC
+-------------- -------------------- ---------- ---------------
+Cid                  Highwind                        26
+            15 ACTIVE                       15 Pilot
+
+Cid                                                  28
+            15 ACTIVE                       15 Pilot
+
+Cid                                                  25
+            15 ACTIVE                       15 Pilot
+
+
+12 rows selected.
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------
+3. Create the contract record
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------
+4. Create the team record
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+sysdate + 57

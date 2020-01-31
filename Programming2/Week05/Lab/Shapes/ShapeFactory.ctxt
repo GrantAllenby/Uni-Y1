@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ShapeFactory()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ ShapeFactory\r\n
+comment1.params=
+comment1.target=TwoDShape\ getShape()
+comment1.text=\r\n\ The\ factory\ method\r\n\ \r\n\ @return\ a\ new\ TwoDShape\ \r\n
+numComments=2

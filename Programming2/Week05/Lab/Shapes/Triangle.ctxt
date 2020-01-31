@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=type\ style\ width\ length
+comment0.target=Triangle(java.lang.String,\ java.lang.String,\ double,\ double)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Triangle\r\n\ accepts\ type\ as\ a\ parameter\ intended\ for\ use\ with\ subclasses.\r\n
+comment1.params=style\ width\ length
+comment1.target=Triangle(java.lang.String,\ double,\ double)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Triangle\ assumes\ type\ set\r\n
+comment2.params=
+comment2.target=double\ area()
+comment2.text=\r\n\ Calculates\ the\ area\ of\ the\ triangle\ as\ width\ *\ length\ /\ 2.0.\r\n\ \r\n\ @return\ \ \ \ \ the\ area\ of\ the\ triangle\ \r\n
+comment3.params=
+comment3.target=void\ printStyle()
+comment3.text=\r\n\ prints\ out\ the\ triangle\ type.\r\n\ \r\n
+comment4.params=
+comment4.target=java.lang.String\ getStyle()
+comment4.text=\r\n\ gets\ the\ triangle\ style\r\n\ \r\n\ @return\ the\ style\ of\ the\ triangle\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ returns\ the\ triangle\ data.\r\n\ \r\n
+comment6.params=
+comment6.target=void\ print()
+comment6.text=\r\n\ prints\ out\ the\ triangle\ data.\r\n\ \r\n
+numComments=7

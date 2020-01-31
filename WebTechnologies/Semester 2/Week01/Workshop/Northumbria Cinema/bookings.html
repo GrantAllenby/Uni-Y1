@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Northumbria Cinema</title>
+</head>
+
+<body>
+<h1>Book your ticket</h1>
+
+<form id="bookingform" action="reflect.php" method="get">
+
+    <fieldset>
+        <legend>Forename and Surname</legend>
+        <label>Forename
+            <input type="text" name="forename">
+        </label>
+        <label>Surname
+            <input type="text" name="surname">
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Movie Selection</legend>
+         <label>Movies Available<br>
+            <select name="movies" size="5">
+                <option value="Lethal Weapon">Lethal Weapon</option>
+                <option value="Lethal Weapon 2">Lethal Weapon 2</option>
+                <option value="Lethal Weapon 3">Lethal Weapon 3</option>
+                <option value="Lethal Weapon 4">Lethal Weapon 4</option>
+                <option value="Dude, where's my car?">Dude, where's my car?</option>
+            </select>
+         </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Ticket Acquisition</legend>
+        <label>Number of Tickets Required
+            <input type="number" name="No. of Tickets:" min="1" max="5"
+        </label>
+    </fieldset>
+
+</form>
+
+</body>
+</html>

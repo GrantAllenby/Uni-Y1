@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=colour\ style\ width\ length
+comment0.target=ColourTriangle(java.lang.String,\ java.lang.String,\ double,\ double)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ ColourTriangle\r\n
+comment1.params=
+comment1.target=java.lang.String\ getColour()
+comment1.text=\r\n\ gets\ the\ current\ value\ for\ colour\r\n\ \r\n\ @return\ \ \ \ \ the\ triangle\ colour\r\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\r\n\ returns\ the\ triangle\ details.\r\n
+comment3.params=
+comment3.target=void\ print()
+comment3.text=\r\n\ prints\ out\ the\ triangle\ details.\r\n
+numComments=4

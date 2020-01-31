@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=
+comment0.target=LabClass()
+comment0.text=\r\n\ Create\ a\ LabClass\ with\ \ no\ limit\ on\ number\ of\ enrolments.\ \r\n\ All\ other\ details\ are\ set\ to\ default\ values.\r\n
+comment1.params=
+comment1.target=int\ getNumberOfStudents()
+comment1.text=\r\n\ Return\ the\ number\ of\ students\ currently\ enrolled\ in\ this\ \r\n\ LabClass.\r\n\ \r\n\ @return\ the\ size\ of\ the\ class\r\n
+comment2.params=roomNumber
+comment2.target=void\ setRoom(java.lang.String)
+comment2.text=\r\n\ Set\ the\ room\ number\ for\ this\ LabClass.\r\n\ @param\ roomNumber\ the\ room\ number\ for\ the\ class\ \r\n
+comment3.params=timeAndDayString
+comment3.target=void\ setTime(java.lang.String)
+comment3.text=\r\n\ Set\ the\ time\ for\ this\ LabClass.\ The\ parameter\ should\ define\r\n\ the\ day\ and\ the\ time\ of\ day,\ such\ as\ "Friday,\ 10am".\r\n\ \r\n\ @param\ timeAndDayString\ the\ time\ and\ day\ for\ the\ class\r\n
+comment4.params=instructorName
+comment4.target=void\ setInstructor(java.lang.String)
+comment4.text=\r\n\ Set\ the\ name\ of\ the\ instructor\ for\ this\ LabClass.\r\n\ @param\ instructorName\ the\ name\ of\ thje\ class\ instructor\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ Provides\ a\ class\ list\ with\ other\ LabClass\ details.\ \r\n\ @return\ the\ class\ details\r\n
+comment6.params=studentName
+comment6.target=boolean\ removeStudent(java.lang.String)
+comment6.text=\r\n\ removes\ a\ student\ from\ the\ list.\r\n\ @param\ studentName\ The\ name\ of\ the\ student\ to\ be\ deleted\r\n\ @return\ true\ if\ student\ deleted\ otherwise\ false\r\n
+comment7.params=
+comment7.target=double\ averageCredits()
+comment7.text=\r\n\ \ calculates\ the\ average\ number\ of\ credits\ for\ students\ in\ the\r\n\ \ lab\ class\ is\ the\ answer\ to\ an\ exercise\ in\ lecture.\r\n\ \ \r\n\ \ @return\ average\ credits\ per\ student\ \r\n
+numComments=8

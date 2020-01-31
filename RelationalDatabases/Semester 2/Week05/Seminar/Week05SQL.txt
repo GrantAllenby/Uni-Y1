@@ -1,0 +1,113 @@
+1. Write the trigger that will calculate the next charge_id.
+
+SQL> create or replace trigger trg_nxtchrgid
+  2  before insert on charge_sheet
+  3  for each row
+  4  declare
+  5  v_id number;
+  6  begin
+  7  select max(charge_id) + 1 into v_id from charge_sheet;
+  8  :new.charge_id :=v_id;
+  9  end;
+ 10  /
+
+Trigger created.
+
+SQL> insert into charge_sheet values (1, 5, 10000, 78);
+
+1 row created.
+
+SQL> select * from charge_sheet where charge_job = 5;
+
+ CHARGE_ID CHARGE_JOB CHARGE_FEE CHARGE_EXPENSES
+---------- ---------- ---------- ---------------
+         4          5      10000           13940
+        15          5      10000           13940
+
+-----------------------------------------------------------------------------------------------------------------------
+2. Write the trigger that will calculate the fee due.
+
+SQL> create or replace trigger trg_feedue
+  2  before insert on charge_sheet
+  3  for each row
+  4  declare
+  5  v_duration number;
+  6  begin
+  7  select (contract_end - contract_start) into v_duration
+  8  from contract
+  9  where contract_id =:new.charge_job;
+ 10  if v_duration < 11 then
+ 11  :new.charge_fee := 10000;
+ 12  else
+ 13  :new.charge_fee :=(((v_duration - 10) * 500) + 10000);
+ 14  end if;
+ 15  end;
+ 16  /
+
+Trigger created.
+-----------------------------------------------------------------------------------------------------------------------
+3. Write the trigger that will calculate the expenses due.
+
+SQL> create or replace trigger trg_expensesdue
+  2  before insert on charge_sheet
+  3  for each row
+  4  declare
+  5  v_expenses number;
+  6  begin
+  7  select sum(expense_value) into v_expenses from job_expenses
+  8  where expense_job = :new.charge_job and expense_approved is not null;
+  9  :new.charge_expenses := v_expenses;
+ 10  end;
+ 11  /
+
+Trigger created.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+4. Write the trigger that will insert a new charge sheet when the contract is closed and all expenses are fulfilled.
+
+SQL> create trigger trg_closecontract
+  2  after update of contract_end on contract
+  3  for each row
+  4  declare
+  5  v_outstanding number;
+  6  begin
+  7  select count(*) into v_outstanding
+  8  from job_expenses
+  9  where expense_job = :new.contract_id and expense_approved is null;
+ 10  if (v_outstanding = 0) then
+ 11  insert into charge_sheet values (1, :new.contract_id, 10000, 999);
+ 12  end if;
+ 13  end;
+ 14  /
+
+Trigger created.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+5. Write the trigger that will fire when an expense is approved and if the contract for that expense is closed 
+and all other expenses are approved create a new charge sheet record.
+
+SQL> create trigger trg_expensescomplete
+  2  after update of expense_approved on job_expenses
+  3  for each row
+  4  declare
+  5  v_outstanding number;
+  6  v_end_date date;
+  7  begin
+  8  select count(*) into v_outstanding
+  9  from job_expenses
+ 10  where expense_job = :new.expense_job and expense_approved is null;
+ 11  select contract_end into v_end_date
+ 12  from contract
+ 13  where contract_id = :new.expense_job;
+ 14  if v_outstanding = 0 and v_end_date is not null then
+ 15  insert into charge_sheet values(1, :new.expense_job, 10000, 999);
+ 16  end if;
+ 17  end;
+ 18  /
+
+Trigger created.
+
+
+-----------------------------------------------------------------------------------------------------------------------

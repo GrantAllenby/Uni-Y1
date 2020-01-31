@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify a film</title>
+</head>
+<body>
+<h1>Modify a film</h1>
+<p>Please enter updated details for the film you want to edit and click 'Update film'.</p>
+<form id="modifyFilm" action="modifyFilm.php" method="get">
+    Film ID <input type="text" name="filmID">
+    Title <input type="text" name="title"><br>
+    Category
+    <select name="categoryID">
+        <option value="c8">buddy</option>
+        <option value="c5">classic</option>
+        <option value="c4">comedy</option>
+        <option value="c1">documentary</option>
+        <option value="c2">drama</option>
+        <option value="c3">epic</option>
+        <option value="c10">horror</option>
+        <option value="c7">music</option>
+        <option value="c9">sci-fi</option>
+        <option value="c11">series</option>
+        <option value="c6">thriller</option>
+    </select><br>
+    Film notes<br>
+    <textarea name="notes" style="width:500px; height:120px;"></textarea>
+    <br />
+    <input type="submit" value="Update film">
+</form>
+</body>
+</html>

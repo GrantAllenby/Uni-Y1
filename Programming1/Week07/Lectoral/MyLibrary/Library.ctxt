@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Library()
+comment1.params=book
+comment1.target=void\ addBook(SimpleBook)
+comment2.params=
+comment2.target=int\ getNumberOfBooks()
+comment3.params=bookToFind
+comment3.target=int\ search(SimpleBook)
+comment4.params=bookToFind
+comment4.target=int\ search2(SimpleBook)
+comment5.params=book
+comment5.target=int\ findLastIndexOf(SimpleBook)
+comment6.params=book
+comment6.target=void\ printFirstIndexOf(SimpleBook)
+numComments=7

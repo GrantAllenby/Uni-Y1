@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=StudentLoyaltyCard
+comment0.text=\ Represents\ a\ Student\ loyalty\ card\ for\ a\ fictional\ university\r\n\ \ bookshop.\r\n\ \ @author\ (Grant\ Allenby\ w18013678)\r\n\ \ @version\ (4/3/19)\r\n
+comment1.params=title\ firstName\ lastName\ cardNumber\ street\ town\ postcode\ studentID
+comment1.target=StudentLoyaltyCard(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\ Constructor\ for\ a\ student\ loyalty\ card.\ This\ constructor\ assigns\ 0\ points.\r\n\ \ @param\ title\ -\ The\ Student's\ title.\r\n\ \ @param\ firstName\ -\ The\ Student's\ first\ name.\r\n\ \ @param\ lastName\ -\ The\ Student's\ last\ name.\r\n\ \ @param\ cardNumber\ -\ The\ Student's\ card\ number.\r\n\ \ @param\ street\ -\ The\ Student's\ street.\r\n\ \ @param\ town\ -\ The\ Student's\ town.\r\n\ \ @param\ postcode\ -\ The\ Student's\ postcode.\r\n\ \ @param\ studentID\ -\ The\ Student's\ ID.\r\n
+comment2.params=title\ firstName\ lastName\ cardNumber\ street\ town\ postcode\ studentID\ points
+comment2.target=StudentLoyaltyCard(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
+comment2.text=\ Constructor\ for\ a\ student\ loyalty\ card.\ This\ constructor\ includes\ points.\ The\ points\ may\ be\ 0.\r\n\ \ @param\ title\ -\ The\ Student's\ title.\r\n\ \ @param\ firstName\ -\ The\ Student's\ first\ name.\r\n\ \ @param\ lastName\ -\ The\ Student's\ last\ name.\r\n\ \ @param\ cardNumber\ -\ The\ Student's\ card\ number.\r\n\ \ @param\ street\ -\ The\ Student's\ street.\r\n\ \ @param\ town\ -\ The\ Student's\ town.\r\n\ \ @param\ postcode\ -\ The\ Student's\ postcode.\r\n\ \ @param\ studentID\ -\ The\ Student's\ ID.\r\n\ \ @param\ points\ -\ The\ Student's\ points.\r\n
+comment3.params=street\ town\ postcode
+comment3.target=void\ amendTermAddress(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment3.text=\ Amends\ the\ Student's\ term\ address.\r\n\ \ @param\ street\ -\ The\ Student's\ street.\r\n\ \ @param\ town\ -\ The\ Student's\ town.\r\n\ \ @param\ postcode\ -\ The\ Student's\ postcode.\r\n
+comment4.params=
+comment4.target=java.lang.String\ getID()
+comment4.text=\ Returns\ the\ Student's\ ID.\r\n\ \ @return\ studentID\ -\ \ The\ Student's\ ID.\r\n
+comment5.params=
+comment5.target=java.lang.String\ getTermAddress()
+comment5.text=\ Returns\ the\ Student's\ term\ address.\r\n\ \ @return\ termAddress.toString()\ -\ The\ Student's\ term\ address.\r\n
+comment6.params=
+comment6.target=void\ print()
+comment6.text=\ Prints\ the\ Student's\ name,\ card\ number,\ student\ id,\ and\ term\ address.\r\n
+comment7.params=
+comment7.target=java.lang.String\ toString()
+comment7.text=\ Returns\ the\ Student's\ name,\ card\ number,\ student\ ID\ and\ term\ address.\r\n\ \ @return\ super.toString()\ -\ The\ Student's\ name\ and\ card\ number.\r\n\ \ @return\ studentID\ -\ The\ Student's\ ID.\r\n\ \ @return\ termAddress\ -\ The\ Student's\ term\ address.\r\n
+numComments=8

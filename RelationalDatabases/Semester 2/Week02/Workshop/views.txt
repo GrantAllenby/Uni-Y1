@@ -1,0 +1,103 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------
+1. Create a view called active_consultants that will display the name and job description of the active consultants.
+
+SQL> create view active_consultants as
+select consultant_fname, consultant_sname, job_desc 
+from consultant join job on consultant_job = job_id 
+where consultant_status = 'ACTIVE';
+
+SQL> select * from active-consultants;
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     JOB_DESC
+-------------------- -------------------- ---------------
+Sonitus              Bellum               Oracle
+Yuna                 Braska               Oracle
+Zell                 Dincht               Mercenary
+Crowe                Altius               Army
+Noctis Lucis         Caelum               Army
+Nyx                  Ulric                Army
+Libertus             Ostium               Army
+Duane                                     Army
+Cloud                Strife               Bar Staff
+Tifa                 Lockhart             Sales
+Minwu                                     Self-Employed
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     JOB_DESC
+-------------------- -------------------- ---------------
+Lunafreya Nox        Fleuret              Free lancer
+Elayne                                    Free lancer
+Gill                                      UNDEFINED
+Brasch               Fon Ronsenburg       UNDEFINED
+Paine                                     UNDEFINED
+Rikku                                     Thief
+Shikaree             Z                    Monk
+Shikaree             Y                    Monk
+Shikaree             X                    Monk
+Drautos                                   Black Mage
+Dogu                 Magus                Black Mage
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     JOB_DESC
+-------------------- -------------------- ---------------
+Magu                 Magus                Black Mage
+Firon                                     Red Mage
+Ragu                 Magus                Red Mage
+Cidolfus             Orlandeau            Pilot
+Cid                  Randell              Pilot
+Cidolfus             Demen Bunansa        Pilot
+Cid                                       Pilot
+Cid                                       Pilot
+Cid                  Highwind             Pilot
+Cid                                       Pilot
+Cid                  Previa               Pilot
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     JOB_DESC
+-------------------- -------------------- ---------------
+Cid                                       Pilot
+Cid                                       Pilot
+Cid                                       Pilot
+Cid                  Kramer               Pilot
+
+37 rows selected.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+2. Create a view called consultant_out which will display the name of the consultant and the number of current contracts they are leading on.
+
+SQL> create view consultant_out as
+select consultant_fname, consultant_sname, count(contract_id) as contract_count
+from contract join consultant on contract_lead = consultant_id
+where contract_end is not null
+group by consultant_id, consultant_fname, consultant_sname;
+
+SQL> select * from consultant_out;
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONTRACT_COUNT
+-------------------- -------------------- --------------
+Dogu                 Magus                             1
+Judge                Gabranth                          2
+Cloud                Strife                            2
+Ffamran                                                1
+Noctis Lucis         Caelum                            1
+Ragu                 Magus                             1
+Cid                  Highwind                          1
+Tifa                 Lockhart                          1
+Judge                Bergan                            2
+Judge                Drace                             2
+
+10 rows selected.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+3. Create a view called client_annual_bill which will display the name of the total charged to a client for the last year.
+
+SQL> create view client_annual_bill as
+select emp_name, sum(charge_fee + charge_expenses) as yearly_expenses
+from employer join contract on contract_client = emp_id
+join charge_sheet on charge_job = contract_id where contract_end > sysdate-365
+group by emp_name, emp_id;
+
+SQL> select * from client_annual_bill;
+
+EMP_NAME                       YEARLY_EXPENSES
+------------------------------ ---------------
+Strife Delivery Service                  36200
+Kingsglaive                              14100
+AVALANCHE                                80925
+Archadian Judges                        278435

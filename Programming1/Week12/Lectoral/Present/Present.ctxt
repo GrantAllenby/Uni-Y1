@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=contents
+comment0.target=Present(java.lang.String)
+comment1.params=
+comment1.target=java.lang.String\ readMessage()
+comment2.params=
+comment2.target=java.lang.String\ getDescription()
+comment3.params=
+comment3.target=void\ openPresent()
+comment4.params=label
+comment4.target=void\ wrapPresent(Label)
+numComments=5

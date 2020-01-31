@@ -1,0 +1,59 @@
+1. Create a table which will hold the log of changes to a employee (consultant)
+	The table should have the same structure as the consultant table but will require additional elements
+	Primary key
+	Data of update
+	Comment attribute
+	The original value and the amended value (double the attribute of the consultant table
+
+SQL> create view available_consultants as
+  2  select consultant_id
+  3  from consultant left join contract on consultant_id = contract_lead
+  4  where consultant_status = 'ACTIVE' and contract_lead is null;
+
+View created.
+
+--------------------------------------------------------------------------------------------------------------------
+SQL> create table consultant_log
+  2  (
+  3  log_id number(3) constraint log_pk primary key,
+  4  log_updated date default sysdate,
+  5  log_comment varchar2(100),
+  6  Consultant_fname_new varchar2(20),
+  7  Consultant_sname_new varchar2(20),
+  8  Consultant_id_new number(3),
+  9  Consultant_town_new varchar2(15),
+ 10  consultant_job_new number(3),
+ 11  consultant_status_new varchar2(20),
+ 12  Consultant_fname_old varchar2(20),
+ 13  Consultant_sname_old varchar2(20),
+ 14  Consultant_id_old number(3),
+ 15  Consultant_town_old varchar2(15),
+ 16  consultant_job_old number(3),
+ 17  consultant_status_old varchar2(20)
+ 18  )
+ 19  ;
+
+Table created.
+
+2. Create a trigger which will fire when any of the attributes in the consultant table have been updated, this trigger will copy the original data and the amended values to the new table, defaulting in the date of update as sysdate 
+
+create or replace trigger trg_cons_upd
+before update or delete on Consultant
+for each row
+declare v_consultant_log_id number;
+begin
+select max(log_id)+1 into v_consultant_log_id
+	from consultant_log;
+if v_consultant_log_id := 1;
+end if;
+insert into consultant_log 
+values(v_consultant_log_id, sysdate, user, :old.consultant_id, :old.consultant_fname, :new.consultant_fname, :old.consultant_sname, :new.consultant_sname, :old.consultant_town, :new.consultant_town, :old.consultant_job, :new.consultant_job, :old.consultant_status, :new.consultant_status);
+end;
+/
+
+
+3. Insert a new record into the consultant table (you can make up the data Change/amended elements of that record and check that the data has been inserted into the new table.
+
+SQL> insert into Consultant values ('John','Smith',44,'Midgar',15,'ACTIVE');
+
+1 row created.

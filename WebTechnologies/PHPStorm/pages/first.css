@@ -1,0 +1,148 @@
+/* this adjusts the body text, defining fonts to use by default,
+coloring text black(#ffe4e1), bordering it solid by 2 pixels in white (#ffffff)
+and creating a margin of 5%. This also aligns text to the center.*/
+body {
+    font-family: arial, helvetica, sans-serif;
+    color: #000000;
+    background: #FFE4E1 url("../images/tokyobackground.jpg") no-repeat fixed center;
+    background-size: cover;
+    margin: 5%;
+    vertical-align: middle;
+}
+
+/* this adjusts the first header text size to 2.5em,
+coloring it red(#ff000) and underlining the first header.*/
+h1 {
+    font-size: 2.5em;
+    color: #FF0000;
+    text-decoration: underline;
+}
+
+/* this adjusts the second header text size to 2.0em,
+coloring it red(#ff0000) and underlining the second header */
+h2 {
+    font-size: 2.0em;
+    color: #FF0000;
+    text-decoration: underline;
+}
+
+/* this adjusts the third header text size to 1.8em,
+coloring it red(#ff0000) and underlining the third header.*/
+h3 {
+    font-size: 1.8em;
+    color: #FF0000;
+    text-decoration: underline;
+}
+
+/* this adjusts the fourth header text size to 1.6em,
+coloring it red(#ff0000) and underlining the fourth header.*/
+h4 {
+    font-size: 1.6em;
+    color: #FF0000;
+    text-decoration: underline;
+}
+
+main {
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+/* this sets the paragraph text to 3 standard types,
+adjusts the paragraph text size to 1.2em and
+coloring text black(#000000) with a white border(#ffffff).*/
+p {
+    font-family: calibri-light, helvetica, sans-serif;
+    font-size: 1.2em;
+    color: #000000;
+}
+
+/* this changes the style of strong text in paragraphs,
+sets the text color to black(#000000), and underlines the
+strong text with a dashed underline.*/
+p strong {
+    color: #000000;
+    text-decoration: dashed underline;
+}
+
+/* this sets the navigation text to 3 standard types,
+font size to 1.5em, and color to red(#ff0000).
+the list style is set to none to remove bullet points,
+with display being set to inline-flex, which allows the
+nav bar to follow the centered theme of  the rest of the page.
+the flex direction is set to a row style to allow more aesthetically
+appealing navigation.*/
+nav ul {
+    font-family: calibri-light, helvetica, sans-serif;
+    font-size: 1.5em;
+    color: #ff0000;
+    list-style: none;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+/* this changes the unordered lists not part of navigation.
+it sets the font to 3 standard types, the font size to 1.3em,
+and the color to red(#ff0000).*/
+ul {
+    font-family: calibri-light, helvetica, sans-serif;
+    font-size: 1.3em;
+    color: #FF0000;
+    list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.welcome {
+    font-family: calibri-light, helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: normal;
+    background-color: #ffffff;
+    border-radius: 3px;
+    width: fit-content;
+}
+
+/* styles the navigation links themselves without interfering with the navigation
+ section itself.*/
+.nav {
+    margin-right: 20px;
+    margin-top: -30px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #ff0000;
+}
+
+/* this changes image sizes to be standardised under this group,
+ it also adds a border to them for better appeal.*/
+.tlandscape {
+    height: 400px;
+    width: 600px;
+    border: 2px solid #FF0000;
+    border-radius: 3px;
+}
+
+/* this changes the text alignment to a center styled look. */
+.thistory {
+    text-align: center;
+}
+
+/* this class modifies the size of the reference links within the history page */
+.treference {
+    font-size: 0.6em;
+}
+
+/*this class modifies how the links in the navigation pane look without modifying
+ the entire navigation section itself*/
+
+.findoutmore {
+
+}
+
+/* styles the copyright information, aligns left, shrinks text, and floats
+ on the bottom of the screen.*/
+.copyright {
+    text-align: left;
+    font-size: 0.5em;
+    background-color: #ffffff;
+    width: fit-content;
+    float: bottom;
+}

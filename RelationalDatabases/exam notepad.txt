@@ -1,0 +1,48 @@
+1. Create a view that will display all active consultants who are available to lead a contract (not currently leading a contract)
+
+create view active_consultants_able_lead as
+select consultant_fname, consultant_sname, consultant_status, contract_end
+from consultant join contract on contract_lead = consultant_id
+where consultant_status = 'ACTIVE'
+or consultant_status = 'active'
+and contract_end < sysdate;
+
+
+2. Generate the trigger that will automaticall complete the charge sheet once a job is completed and all expenses have been approved
+
+3. Create a view that will display all the expenses assosciated with a contract, the view should contain the following data elements: contract_id, expense_id, employee_id claiming, amount claimed and approval date (if present)
+
+create view display_contract_expenses as
+select contract_id, contract_comment, expense_id, emp_id, emp_name, expense_value, cat_desc, expense_approved
+from contract join employer on contract_client = emp_id
+join job_expenses on expense_job = contract_id
+join expense_cat on expense_type = cat_id
+where expense_approved < sysdate;
+
+
+
+SELECT consultant_id     AS "ID", 
+       consultant_fname  AS "First Name", 
+       consultant_sname  AS "Second Name", 
+       job_desc          AS "Job", 
+       consultant_status AS "Status", 
+       emp_name          AS "Employer", 
+       expense_value     AS "Expenses", 
+       cat_desc          AS "Type", 
+       contract_end      AS "End Date", 
+       charge_fee        AS "Fee", 
+       charge_expenses   AS "Expenses" 
+FROM   consultant 
+       JOIN contract 
+         ON contract_lead = consultant_id 
+       JOIN charge_sheet 
+         ON charge_job = contract_id 
+       JOIN job 
+         ON contract_job = job_id 
+       JOIN employer 
+         ON contract_client = emp_id 
+       JOIN job_expenses 
+         ON expense_consultant = consultant_id 
+       JOIN expense_cat 
+         ON expense_type = cat_id 
+ORDER  BY consultant_id DESC; 

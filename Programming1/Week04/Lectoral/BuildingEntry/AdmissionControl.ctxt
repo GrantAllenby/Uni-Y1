@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=maxOccupancy
+comment0.target=AdmissionControl(int)
+comment1.params=
+comment1.target=void\ enterBuilding()
+comment2.params=
+comment2.target=void\ leaveBuilding()
+comment3.params=
+comment3.target=int\ getMaxOccupancy()
+comment4.params=
+comment4.target=int\ getNumberInbuilding()
+numComments=5

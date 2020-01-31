@@ -1,0 +1,8 @@
+Dr	Anne	Anders	stu 30
+Mr	Billy	Brown	stu 15
+Miss	Carol	Corley	sta 10
+Prof	Dan	Denton	stu 22
+Dr	Enid	Ewely	stu 35
+Mr	Frank	Forest	stu 20
+Mrs	Gina	Goose	sta 23
+  

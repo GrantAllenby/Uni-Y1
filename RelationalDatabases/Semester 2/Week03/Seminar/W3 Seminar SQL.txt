@@ -1,0 +1,142 @@
+----------Week 03 Databases Seminar----------
+1. Create a trigger that will automatically calculate the next sequential consultant_id.
+
+Test your code by entering:
+
+Insert into consultant (consultant_fname, consultant_sname, consultant_ID, consultant_job) 
+Values ('CID',null, 25, 2);
+
+select consultant_fname, consultant_sname, consultant_id from consultant;
+---------------------------------------------
+SQL> create trigger trg_newconsultant
+  2  before insert on consultant
+  3  for each row
+  4  declare
+  5  v_id number;
+  6  begin
+  7  select max(consultant_id) +1 into v_id from consultant;
+  8  :new.consultant_id :=v_id;
+  9  end;
+ 10  /	
+
+Trigger created.
+
+SQL> insert into consultant (consultant_fname, consultant_sname, consultant_ID, consultant_job)
+  2  Values ('CID',null, 25, 2);
+
+1 row created.
+
+SQL> select consultant_fname, consultant_sname, consultant_id from consultant;
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID
+-------------------- -------------------- -------------
+Cloud                Strife                           1
+Nyx                  Ulric                            2
+Noctis Lucis         Caelum                           3
+Crowe                Altius                           4
+Lunafreya Nox        Fleuret                          5
+Tifa                 Lockhart                         6
+Libertus             Ostium                           7
+Luche                Lazarus                          8
+Drautos                                               9
+Sonitus              Bellum                          10
+Firon                                                11
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID
+-------------------- -------------------- -------------
+Duane                                                12
+Elayne                                               13
+Gill                                                 14
+Minwu                                                15
+Yuna                 Braska                          16
+Rikku                                                17
+Paine                                                18
+Cid                  Fabool                          19
+Cid                  Kramer                          20
+Cid                                                  21
+Cid                                                  22
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID
+-------------------- -------------------- -------------
+Cid                                                  23
+Cid                  Previa                          24
+Cid                                                  25
+Cid                  Highwind                        26
+Cid                                                  27
+Cid                                                  28
+Cidolfus             Demen Bunansa                   29
+Cidolfus             Orlandeau                       30
+Cid                  Randell                         31
+Magu                 Magus                           32
+Dogu                 Magus                           33
+
+CONSULTANT_FNAME     CONSULTANT_SNAME     CONSULTANT_ID
+-------------------- -------------------- -------------
+Ragu                 Magus                           34
+Shikaree             X                               35
+Shikaree             Y                               36
+Shikaree             Z                               37
+Judge                Bergan                          38
+Judge                Drace                           39
+Judge                Gabranth                        40
+Brasch               Fon Ronsenburg                  41
+Ffamran                                              42
+Zell                 Dincht                          43
+CID                                                  44
+
+44 rows selected.
+---------------------------------------------
+2.	Create 2 triggers on charge_sheet, one to overwrite data with the next sequential charge id and the other to calculate the expenses for the job being charged for
+
+Test your code by entering:
+
+delete from charge_sheet where charge_job = 5 ;
+
+select * from charge_sheet where charge_job = 5;
+
+insert into charge_sheet values (1, 5, 10000, 78);
+
+check the output from charge_sheet and compare to the data entered
+----------------------------------------------
+SQL> create trigger trg_next_charge_id
+  2  before insert on charge_sheet
+  3  for each row
+  4  declare
+  5  v_id number;
+  6  begin
+  7  select max(charge_id) +1 into v_id from charge_sheet;
+  8  :new.charge_id := v_id;
+  9  end;
+ 10  /
+
+Trigger created.
+
+SQL> create trigger trg_chargeexpenses
+  2  before insert on charge_sheet
+  3  for each row
+  4  declare
+  5  v_expenses number;
+  6  begin
+  7  select sum(expense_value) into v_expenses
+  8  from job_expenses
+  9  where expense_job = :new.charge_job;
+ 10  :new.charge_expenses :=v_expenses;
+ 11  end;
+ 12  /
+
+Trigger created.
+
+SQL> select * from charge_sheet where charge_job = 5;
+
+ CHARGE_ID CHARGE_JOB CHARGE_FEE CHARGE_EXPENSES
+---------- ---------- ---------- ---------------
+         4          5      10000           13940
+
+SQL> delete from charge_sheet where charge_job = 5;
+
+2 rows deleted.
+
+SQL> insert into charge_sheet values (1, 5, 10000, 78);
+
+1 row created.
+---------------------------------------------

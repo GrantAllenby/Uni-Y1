@@ -1,0 +1,41 @@
+nav {
+    font-family: arial, helvetica, sans-serif;
+    width: 200px;
+    align-content: left;
+    text-align: left;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li a:link, a:visited {
+    display: block;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #711515;
+    color: #FFFFFF;
+}
+
+body {
+    font-family: arial, helvetica, sans-serif;
+    text-align: center;
+    max-width: 97%;
+}
+
+head {
+    min-height: 100px;
+}
+
+main {
+    text-align: left;
+    vertical-align: center;
+}
+
+.tourdates {
+    list-style: none;
+}

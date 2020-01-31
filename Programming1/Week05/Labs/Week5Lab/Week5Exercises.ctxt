@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Week5Exercises()
+comment0.text=\ Defines\ a\ new\ scanner\ for\ use\ by\ the\ user.\r\n\ \r\n
+comment1.params=
+comment1.target=void\ ex1()
+comment1.text=\ Constructor\ for\ entering\ students\ level\ 5\ and\ level\ 6\ marks\ and\ then\ averaging\ the\ result.\r\n\ \ It\ will\ then\ output\ a\ grade\ boundary\ for\ the\ average\ result.\r\n\ \ The\ constructor\ will\ also\ output\ an\ error\ message\ to\ the\ user\ if\ the\ results\ are\ incorrect.\r\n
+comment2.params=
+comment2.target=void\ ex2()
+numComments=3

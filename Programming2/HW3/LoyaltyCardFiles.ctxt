@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=inFileName\ outFileName
+comment0.target=LoyaltyCardFiles(java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ The\ constuctor\ for\ the\ class\ LoyaltyCardFiles\r\n\ Instantiates\ the\ in\ and\ out\ files,\ throwing\ exceptions\ if\ they\ don't\ \r\n\ exist\ or\ already\ exist\ respectively,\ and\ calls\ the\ other\ methods\ of\ the\ class\r\n\ \r\n\ @param\ inFileName\ \ \ \ the\ file\ name\ of\ the\ existing\ file\r\n\ @param\ outFileName\ \ \ the\ file\ name\ for\ the\ new\ file\r\n
+comment1.params=
+comment1.target=void\ makeLinks()
+comment1.text=\r\n\ Instantiates\ the\ Scanner\ and\ PrintWriter\ objects\ and\ links\ them\ to\ the\ appropriate\ files\r\n
+comment2.params=
+comment2.target=void\ processFiles()
+comment2.text=\r\n\ Reads\ the\ inFile,\ and\ writes\ to\ the\ outFile,\ giving\ details\ depending\ on\ the\ input\r\n
+comment3.params=
+comment3.target=void\ closeLinks()
+comment3.text=\r\n\ Closes\ the\ links\ to\ the\ files\ via\ the\ Scanner\ and\ PrintWriter\ objects\r\n
+numComments=4
